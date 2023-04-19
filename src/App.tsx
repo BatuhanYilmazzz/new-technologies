@@ -9,20 +9,19 @@ import {
   matches,
 } from '@mantine/form';
 import { Button, Group, TextInput, NumberInput } from '@mantine/core';
-import { useBearStore } from './store';
+import { useBearStore, useOtherBearStore } from './store';
 import { useEffect } from 'react';
 import { shallow } from 'zustand/shallow';
 
 function App() {
   const bears = useBearStore((state) => state.bears, shallow);
-  const increaseBears = useBearStore((state) => state.increase, shallow);
-  const getTodos = useBearStore((state) => state.getTodos, shallow);
   const todos = useBearStore((state) => state.todos, shallow);
+  const posts = useOtherBearStore((state) => state, shallow);
 
-  console.log(todos)
+  console.log(posts);
 
   useEffect(()=> {
-    getTodos()
+    posts.getPosts();
   },[])
 
   const form = useForm({
@@ -92,7 +91,7 @@ function App() {
         />
 
         <Group position='right' mt='md'>
-          <Button onClick={() => increaseBears(1)}>Submit</Button>
+          <Button type='submit'>Submit</Button>
         </Group>
         {bears}
       </Box>
