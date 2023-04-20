@@ -1,4 +1,4 @@
-import { rem } from '@mantine/core';
+import { rem } from '@mantine/core'
 
 export const theme = {
   // components
@@ -67,4 +67,4 @@ export const theme = {
       outline: `${rem(2)} solid ${theme.colors.violet[4]}`,
     }),
   },
-};
+}

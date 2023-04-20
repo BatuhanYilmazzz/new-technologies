@@ -1,10 +1,10 @@
-import { create } from 'zustand';
-import { devtools, persist } from 'zustand/middleware';
-import axios from 'axios';
+import { create } from 'zustand'
+import { devtools, persist } from 'zustand/middleware'
+import axios from 'axios'
 
 interface BearState {
-  bears: number;
-  todos: string[];
+  bears: number
+  todos: string[]
 }
 
 export const useBearStore = create<BearState>()(
@@ -14,20 +14,20 @@ export const useBearStore = create<BearState>()(
         bears: 0,
         todos: [],
         setPosts: () => {
-          set({ todos: ['eeqe', 'dasdad'] });
+          set({ todos: ['eeqe', 'dasdad'] })
         },
       }),
       {
         name: 'bear-storage',
-      }
-    )
-  )
-);
+      },
+    ),
+  ),
+)
 
 interface OtherBearState {
-  posts: [];
-  getPosts: () => void;
-  hello: number;
+  posts: []
+  getPosts: () => void
+  hello: number
 }
 
 export const useOtherBearStore = create<OtherBearState>()(
@@ -36,16 +36,14 @@ export const useOtherBearStore = create<OtherBearState>()(
       (set) => ({
         posts: [],
         getPosts: async () => {
-          const res2: [] = await axios.get(
-            'https://jsonplaceholder.typicode.com/posts'
-          );
-          set({ posts: res2 });
+          const res2: [] = await axios.get('https://jsonplaceholder.typicode.com/posts')
+          set({ posts: res2 })
         },
         hello: 0,
       }),
       {
         name: 'bear',
-      }
-    )
-  )
-);
+      },
+    ),
+  ),
+)
